@@ -1,5 +1,6 @@
 package com.anibalbastias.weatherlib.data.retrofit.service
 
+import com.anibalbastias.weatherlib.data.model.currentconditions.RemoteCurrentCondition
 import com.anibalbastias.weatherlib.data.model.location.RemoteGeoLocation
 import com.anibalbastias.weatherlib.data.retrofit.service.Constants.Endpoint.GET_CURRENT_CONDITIONS
 import com.anibalbastias.weatherlib.data.retrofit.service.Constants.Endpoint.SEARCH_GEO_POSITION
@@ -21,5 +22,5 @@ interface WeatherService {
     suspend fun getCurrentConditions(
         @Path(CITY_KEY) cityKey: String,
         @Query(DETAILS) details: Boolean
-    ): List<RemoteGeoLocation>?
+    ): List<RemoteCurrentCondition>?
 }
