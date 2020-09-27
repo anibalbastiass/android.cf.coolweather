@@ -1,5 +1,5 @@
 package com.anibalbastias.weatherlib
 
-class WeatherController {
+class WeatherManager {
 
 }

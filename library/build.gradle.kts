@@ -50,4 +50,13 @@ dependencies {
     api(LibraryDependency.RX_KOTLIN)
 
     kapt(LibraryDependency.LIFECYCLE_COMPILER)
+
+    implementation(LibraryDependency.OK_HTTP)
+    implementation(LibraryDependency.LOGGING_INTERCEPTOR)
+    implementation(LibraryDependency.STETHO)
+    implementation(LibraryDependency.STETHO_OK_HTTP)
+
+    api(LibraryDependency.GMS_LOCATION)
+    api(LibraryDependency.RETROFIT)
+    api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
 }

@@ -21,6 +21,7 @@ pluginManagement {
                 GradlePluginId.ANDROID_APPLICATION,
                 GradlePluginId.ANDROID_LIBRARY,
                 GradlePluginId.SAFE_ARGS -> useModule(GradleOldWayPlugins.SAFE_ARGS)
+                GradlePluginId.JACOCO -> useModule(GradleOldWayPlugins.JACOCO)
                 GradlePluginId.JFROG_ARTIFACTORY -> useModule(GradleOldWayPlugins.JFROG_BUILD_INFO)
             }
         }
