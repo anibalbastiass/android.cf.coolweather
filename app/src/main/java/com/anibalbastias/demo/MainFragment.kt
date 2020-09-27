@@ -2,15 +2,12 @@ package com.anibalbastias.demo
 
 import android.os.Bundle
 import android.view.View
-import com.anibalbastias.demo.base.extension.ViewExtension.toast
 import com.anibalbastias.demo.base.fragment.BaseContainerFragment
-import com.anibalbastias.demo.base.navigation.NavManager
 import com.anibalbastias.weatherlib.WeatherManager
 import com.anibalbastias.weatherlib.presentation.contract.WeatherListener
 import com.anibalbastias.weatherlib.presentation.model.WeatherCurrentCondition
 import com.anibalbastias.weatherlib.presentation.model.WeatherForecast
 import com.anibalbastias.weatherlib.presentation.model.WeatherGeoLocation
-import org.kodein.di.generic.instance
 
 class MainFragment : BaseContainerFragment() {
 
@@ -24,9 +21,7 @@ class MainFragment : BaseContainerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        manager.getGeoPosition(
-            -33.5346427,
-            -70.630751,
+        manager.getGeoPosition(-33.5346427, -70.630751,
             object: WeatherListener {
                 override fun onGetGeoLocationSuccess(geoLocation: WeatherGeoLocation) {
                     TODO("Not yet implemented")
