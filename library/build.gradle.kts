@@ -1,3 +1,6 @@
+import com.android.build.gradle.internal.dsl.BaseFlavor
+import com.android.build.gradle.internal.dsl.DefaultConfig
+
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.KOTLIN_ANDROID)
@@ -5,11 +8,13 @@ plugins {
     id(GradlePluginId.SAFE_ARGS)
     id(GradlePluginId.JFROG_ARTIFACTORY)
     id(GradlePluginId.MAVEN_PUBLISH)
+    id(GradlePluginId.JACOCO_ID)
     kotlin(GradlePluginId.KAPT)
 }
 
 apply(from ="./../config/gradle/common-android-core-library.gradle")
 apply(from ="./../config/gradle/jfrog-artifactory.gradle")
+apply(from = "./../config/gradle/jacoco.gradle")
 
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
@@ -21,6 +26,10 @@ android {
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
+
+        buildConfigFieldFromGradleProperty("apiBaseUrl")
+        buildConfigFieldFromGradleProperty("iconBaseUrl")
+        buildConfigFieldFromGradleProperty("weatherApikey")
     }
 }
 
@@ -59,4 +68,16 @@ dependencies {
     api(LibraryDependency.GMS_LOCATION)
     api(LibraryDependency.RETROFIT)
     api(LibraryDependency.RETROFIT_MOSHI_CONVERTER)
+}
+
+fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
+    val propertyValue = project.properties[gradlePropertyName] as? String
+    checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
+
+    val androidResourceName = "GRADLE_${gradlePropertyName.toSnakeCase()}".toUpperCase()
+    buildConfigField("String", androidResourceName,"\"" + propertyValue + "\"")
+}
+
+fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") {
+    it.toLowerCase()
 }

@@ -3,10 +3,12 @@ plugins {
     id(GradlePluginId.KOTLIN_ANDROID)
     id(GradlePluginId.KOTLIN_ANDROID_EXTENSIONS)
     id(GradlePluginId.SAFE_ARGS)
+    id(GradlePluginId.JACOCO_ID)
     kotlin(GradlePluginId.KAPT)
 }
 
 apply(from ="./../config/gradle/common-android-core-library.gradle")
+apply(from = "./../config/gradle/jacoco.gradle")
 
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)

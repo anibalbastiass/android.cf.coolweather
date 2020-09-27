@@ -19,6 +19,7 @@ object GradlePluginId {
     const val MAVEN_PUBLISH = "maven-publish"
     const val KAPT = "kapt"
     const val JACOCO = "org.jacoco:org.jacoco.core"
+    const val JACOCO_ID = "jacoco"
 }
 
 object GradleOldWayPlugins {
