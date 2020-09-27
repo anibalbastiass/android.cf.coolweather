@@ -1,6 +1,7 @@
 package com.anibalbastias.weatherlib.data.retrofit.service
 
 import com.anibalbastias.weatherlib.data.retrofit.service.Constants.Request.CITY_KEY
+import com.anibalbastias.weatherlib.data.retrofit.service.Constants.Request.N_DAYS
 
 object Constants {
 
@@ -8,12 +9,16 @@ object Constants {
         private const val API_VERSION = "v1"
         const val SEARCH_GEO_POSITION = "locations/$API_VERSION/cities/geoposition/search"
         const val GET_CURRENT_CONDITIONS = "currentconditions/$API_VERSION/{$CITY_KEY}"
+        const val GET_N_DAYS_FORECASTS = "forecasts/$API_VERSION/daily/{$N_DAYS}/{$CITY_KEY}"
     }
 
     object Request {
         const val CITY_KEY = "cityKey"
         const val DETAILS = "details"
         const val QUERY = "q"
+        const val N_DAYS = "nDays"
+        const val ONE_DAY = "1day"
+        const val FIVE_DAYS = "5day"
     }
 
     object Keys {
@@ -97,5 +102,21 @@ object Constants {
         const val TEMPERATURE_SUMMARY = "TemperatureSummary"
         const val MOBILE_LINK = "MobileLink"
         const val LINK = "Link"
+        const val DATE = "Date"
+        const val SOURCES = "Sources"
+        const val DAY = "Day"
+        const val EPOCH_DATE = "EpochDate"
+        const val NIGHT = "Night"
+        const val HEAD_LINE = "Headline"
+        const val DAILY_FORECASTS = "DailyForecasts"
+        const val MINIMUM = "Minimum"
+        const val MAXIMUM = "Maximum"
+        const val CATEGORY = "Category"
+        const val END_EPOCH_DATE = "EndEpochDate"
+        const val EFFECTIVE_EPOCH_DATE = "EffectiveEpochDate"
+        const val SEVERITY = "Severity"
+        const val TEXT = "Text"
+        const val END_DATE = "EndDate"
+        const val EFFECTIVE_DATE = "EffectiveDate"
     }
 }
