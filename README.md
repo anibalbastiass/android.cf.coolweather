@@ -41,7 +41,7 @@ allprojects {
 Then, import the library into your `build.gradle` (app) file for use AARMY project:
 
 ```gradle
-implementation('com.anibalbastias.library:weatherlib:1.0.0@aar')
+implementation('com.anibalbastias.weatherapi:library:1.0.0@aar')
 ```
 
 ## Example for use in Android Demo App
