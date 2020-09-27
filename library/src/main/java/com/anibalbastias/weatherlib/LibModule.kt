@@ -14,7 +14,7 @@ internal const val MODULE_NAME = "WeatherLib"
 
 val appModule = Kodein.Module("${MODULE_NAME}Module") {
 
-    bind() from singleton { AuthenticationInterceptor(BuildConfig.GRADLE_API_BASE_URL) }
+    bind() from singleton { AuthenticationInterceptor(BuildConfig.GRADLE_WEATHER_APIKEY) }
 
     bind<HttpLoggingInterceptor>() with singleton {
         HttpLoggingInterceptor().apply {

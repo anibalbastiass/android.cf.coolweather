@@ -6,7 +6,7 @@ import com.anibalbastias.weatherlib.data.retrofit.service.Constants.Keys.LOCALIZ
 import com.squareup.moshi.Json
 
 open class RemoteLocal(
-    @field:Json(name = LOCALIZED_NAME) open val localizedName: String? = null,
-    @field:Json(name = ID) open val id: String? = null,
-    @field:Json(name = ENGLISH_NAME) open val englishName: String? = null
+    @field:Json(name = LOCALIZED_NAME) val localizedName: String? = null,
+    @field:Json(name = ID) val id: String? = null,
+    @field:Json(name = ENGLISH_NAME) val englishName: String? = null
 )
