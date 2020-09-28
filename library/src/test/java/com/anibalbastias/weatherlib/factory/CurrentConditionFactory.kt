@@ -11,6 +11,7 @@ import com.anibalbastias.weatherlib.data.model.common.RemoteUnit
 import com.anibalbastias.weatherlib.data.model.currentconditions.RemoteDirection
 import com.anibalbastias.weatherlib.data.model.currentconditions.RemotePrecipitationSummary
 import com.anibalbastias.weatherlib.data.model.currentconditions.RemoteWind
+import com.anibalbastias.weatherlib.factory.CommonFactory.makeRemoteMetric
 
 object CurrentConditionFactory {
 
@@ -50,17 +51,6 @@ object CurrentConditionFactory {
         degrees = generateInt(),
         localized = generateString(),
         english = generateString()
-    )
-
-    private fun makeRemoteMetric() = RemoteMetricType(
-        metric = makeRemoteUnit(),
-        imperial = makeRemoteUnit()
-    )
-
-    private fun makeRemoteUnit() = RemoteUnit(
-        unitType = generateInt(),
-        value = generateDouble(),
-        unit = generateString()
     )
 
     fun makeDomainCurrentCondition() = DomainCurrentCondition(

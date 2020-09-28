@@ -20,7 +20,7 @@ class ForecastMapper {
             min = temperature?.minimum?.imperial?.getImperialFormat() ?: "",
             max = temperature?.maximum?.imperial?.getImperialFormat() ?: "",
             dayIcon = getUrlIcon(day?.icon ?: 0),
-            nightIcon = getUrlIcon(day?.icon ?: 0)
+            nightIcon = getUrlIcon(night?.icon ?: 0)
         )
     }
 }

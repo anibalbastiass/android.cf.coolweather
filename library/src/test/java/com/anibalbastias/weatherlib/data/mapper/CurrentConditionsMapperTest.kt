@@ -20,7 +20,10 @@ class CurrentConditionsMapperTest {
         with(DataExtension) {
             assertEquals("currentDate", remote.localObservationDateTime, domain.currentDate)
             assertEquals("weatherText", remote.weatherText, domain.weatherText)
-            assertEquals("weatherIcon", getUrlIcon(remote.weatherIcon ?: 0), domain.weatherIcon)
+            assertEquals(
+                "weatherIcon", getUrlIcon(remote.weatherIcon ?: 0),
+                domain.weatherIcon
+            )
             assertEquals(
                 "currentTemperature",
                 remote.temperature?.imperial?.getImperialFormat(),
@@ -53,7 +56,8 @@ class CurrentConditionsMapperTest {
             )
             assertEquals(
                 "precipitationSummary",
-                remote.precipitationSummary?.precipitation?.imperial?.getImperialFormat() ?: "",
+                remote.precipitationSummary?.precipitation?.imperial?.getImperialFormat()
+                    ?: "",
                 domain.precipitationSummary
             )
         }
