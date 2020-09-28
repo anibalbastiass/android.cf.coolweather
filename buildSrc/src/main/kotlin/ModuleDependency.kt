@@ -5,6 +5,7 @@ import kotlin.reflect.full.memberProperties
 object ModuleDependency {
     // All consts are accessed via reflection
     const val APP = ":app"
+    const val TEST_UTILS = ":testutils"
     const val LIBRARY = ":library"
 
     fun getAllModules() = ModuleDependency::class.memberProperties

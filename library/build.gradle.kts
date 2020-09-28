@@ -39,6 +39,9 @@ kapt {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    api(project(ModuleDependency.TEST_UTILS))
+
     api(LibraryDependency.KOTLIN)
     api(LibraryDependency.KOTLIN_REFLECT)
     api(LibraryDependency.KODEIN)
