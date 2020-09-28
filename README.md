@@ -161,4 +161,5 @@ The following image shows the almost 80% of coverage for Unit testing in library
 * Implement Detekt for vulnerability code
 * Increment coverage for Unit tests
 * Implement this library for iOS Apps.
+* Complete Demo handling connection cases and integrate forecast data
 
