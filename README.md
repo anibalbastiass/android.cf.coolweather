@@ -14,35 +14,151 @@ This project is being maintained to match current industry standards.
 For reuse this library, add this following data in your local `~/.gradle/gradle.properties` file.
 If you would like to contribute or use this library, please request the data to anibal.bastias@gmail.com
 
-## Example of use
+## Example for use in Android Demo App
 
-This is an general example for local gradle.properties file
+For use a basic Android project. Please include the following steps (Tutorial for Kotlin):
 
-```
-# JFrog Artifactory
-artifactory_user={YOUR-ARTIFACTORY-USER}
-artifactory_password={YOUR-ARTIFACTORY-USER-PASSWORD}
-artifactory_contextUrl={YOUR-ARTIFACTORY-SERVER-URL}
+* `gradle.properties` from root project:
+
+```gradle
+artifactory_contextUrl=https://anibalbastias.jfrog.io/artifactory/
 artifactory_rel_repo_key=libs-release-local
+artifactory_user=tester
+artifactory_password=APhDHPFrvL2xUmv64FyXbLo6gr
 ```
-## Import into project as Artifactory component
 
-For use this library, add the following code into build.gradle (root) file:
+* `build.gradle` from root project:
 
 ```gradle
 allprojects {
     repositories {
+        google()
         jcenter()
-        maven { url artifactory_contextUrl + artifactory_rel_repo_key }
+
+        maven { url "https://dl.bintray.com/kodein-framework/Kodein-DI" }
+        maven {
+            // Library
+            url artifactory_contextUrl + "/" + artifactory_rel_repo_key
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                username artifactory_user
+                password artifactory_password
+            }
+        }
     }
 }
 ```
 
-Then, import the library into your `build.gradle` (app) file for use AARMY project:
+* `build.gradle` from app module, add the following import libraries:
 
 ```gradle
-implementation('com.anibalbastias.weatherapi:library:1.0.0@aar')
+implementation("org.kodein.di:kodein-di-generic-jvm:6.5.5")
+implementation("org.kodein.di:kodein-di-framework-android-x:6.5.5")
+implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
+implementation("com.squareup.okhttp3:okhttp:4.3.1")
+implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
+implementation("com.squareup.retrofit2:retrofit:2.7.1")
+implementation("com.squareup.retrofit2:converter-moshi:2.7.1")
+
+implementation("com.anibalbastias.weatherapi:library:1.0.0@aar")
 ```
 
-## Example for use in Android Demo App
+* In the Android Manifest file:
+
+```xml
+<!-- Mandatory permission for request to Endpoint -->
+<uses-permission android:name="android.permission.INTERNET" />
+
+<!-- Mandatory usesCleartextTraffic attribute for secure SSL endpoints -->
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:usesCleartextTraffic="true"
+    android:theme="@style/Theme.WeatherTestApp"
+    tools:ignore="UnusedAttribute">
+    <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+</application>
+```
+
+* In the `MainActivity` class or your prefered MainFragment:
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    lateinit var manager: WeatherManager
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        manager = WeatherManager(application)
+
+        val latitude = -33.5346427
+        val longitude = -70.630751
+
+        manager.getCurrentWeather(latitude, longitude,
+            object: WeatherListener {
+                override fun onGetGeoLocationSuccess(geoLocation: WeatherGeoLocation) {
+                    Toast.makeText(applicationContext, geoLocation.cityName, Toast.LENGTH_LONG).show()
+                }
+
+                override fun onGetGeoLocationError(message: String) {
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                }
+
+                override fun onGetCurrentConditionsSuccess(currentConditions: WeatherCurrentCondition) {
+
+                }
+
+                override fun onGetCurrentConditionsError(message: String) {
+
+                }
+
+                override fun onGet1DayForecastSuccess(currentConditions: WeatherForecast) {
+
+                }
+
+                override fun onGet1DayForecastError(message: String) {
+
+                }
+
+                override fun onGet5DayForecastSuccess(currentConditions: WeatherForecast) {
+
+                }
+
+                override fun onGet5DayForecastError(message: String) {
+
+                }
+            })
+    }
+}
+```
+
+This is a screenshot for the needed and important data from API:
+
+![demo](misc/demo.png?raw=true)
+
+## Test Coverage
+
+The following image shows the almost 80% of coverage for Unit testing in library
+
+![test_coverage](misc/test-coverage.png?raw=true)
+
+## TODO
+
+* Implement Actions for Github CI
+* Implement Detekt for vulnerability code
+* Increment coverage for Unit tests
+* Implement this library for iOS Apps.
 

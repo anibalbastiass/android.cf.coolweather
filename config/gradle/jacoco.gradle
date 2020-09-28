@@ -9,7 +9,7 @@ tasks.withType(Test) {
 }
 
 project.afterEvaluate {
-    android.testVariants.all { variant ->
+    android.libraryVariants.all { variant ->
         def variantName = variant.name
         def testTaskName = "test${variantName.capitalize()}UnitTest"
         tasks.create(name: "${testTaskName}Coverage", type: JacocoReport, dependsOn: "$testTaskName") {
@@ -27,10 +27,24 @@ project.afterEvaluate {
                     '**/Manifest*.*',
                     '**/*Test*.*',
                     'android/**/*.*',
+                    'androidx/**/*.*',
                     '**/constant/*',
                     '**/constants/*',
                     '**/adapter/*',
                     '**/Constants.*',
+                    'com/anibalbastias/weatherlib/databinding/**',
+                    'com/anibalbastias/weatherlib/DataBinderMapperImpl.*',
+                    'com/anibalbastias/weatherlib/FeatureKodeinModule.*',
+                    'com/anibalbastias/weatherlib/DataBindingInfo.*',
+                    'com/anibalbastias/weatherlib/DataBinderMapperImpl.InnerBrLookup.*',
+                    'com/anibalbastias/weatherlib/DataBinderMapperImpl.InnerLayoutIdLookup.*',
+                    'com/anibalbastias/weatherlib/BR.*',
+                    'com/anibalbastias/weatherlib/data/ProductsDataModuleKt.*',
+                    'com/anibalbastias/weatherlib/domain/ProductsDomainModuleKt.*',
+                    'com/anibalbastias/weatherlib/presentation/ProductsPresentationModuleKt.*',
+                    'com/anibalbastias/weatherlib/ui/ProductsUiModuleKt.*',
+                    'com/anibalbastias/weatherlib/generated/***',
+                    'com/anibalbastias/weatherlib/ui/**',
                     '**/di/*'
             ]
             def javaClasses = fileTree(dir: variant.javaCompiler.destinationDir, excludes: excludes)

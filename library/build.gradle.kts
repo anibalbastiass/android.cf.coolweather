@@ -1,5 +1,4 @@
 import com.android.build.gradle.internal.dsl.BaseFlavor
-import com.android.build.gradle.internal.dsl.DefaultConfig
 
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
@@ -12,8 +11,8 @@ plugins {
     kotlin(GradlePluginId.KAPT)
 }
 
-apply(from ="./../config/gradle/common-android-core-library.gradle")
-apply(from ="./../config/gradle/jfrog-artifactory.gradle")
+apply(from = "./../config/gradle/common-android-core-library.gradle")
+apply(from = "./../config/gradle/jfrog-artifactory.gradle")
 apply(from = "./../config/gradle/jacoco.gradle")
 
 android {
@@ -78,7 +77,7 @@ fun BaseFlavor.buildConfigFieldFromGradleProperty(gradlePropertyName: String) {
     checkNotNull(propertyValue) { "Gradle property $gradlePropertyName is null" }
 
     val androidResourceName = "GRADLE_${gradlePropertyName.toSnakeCase()}".toUpperCase()
-    buildConfigField("String", androidResourceName,"\"" + propertyValue + "\"")
+    buildConfigField("String", androidResourceName, "\"" + propertyValue + "\"")
 }
 
 fun String.toSnakeCase() = this.split(Regex("(?=[A-Z])")).joinToString("_") {
