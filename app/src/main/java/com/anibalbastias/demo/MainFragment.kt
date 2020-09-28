@@ -2,12 +2,14 @@ package com.anibalbastias.demo
 
 import android.os.Bundle
 import android.view.View
+import com.anibalbastias.demo.base.extension.ViewExtension.setImageUrl
 import com.anibalbastias.demo.base.fragment.BaseContainerFragment
 import com.anibalbastias.weatherlib.WeatherManager
 import com.anibalbastias.weatherlib.presentation.contract.WeatherListener
 import com.anibalbastias.weatherlib.presentation.model.WeatherCurrentCondition
 import com.anibalbastias.weatherlib.presentation.model.WeatherForecast
 import com.anibalbastias.weatherlib.presentation.model.WeatherGeoLocation
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseContainerFragment() {
 
@@ -24,35 +26,45 @@ class MainFragment : BaseContainerFragment() {
         manager.getCurrentWeather(-33.5346427, -70.630751,
             object: WeatherListener {
                 override fun onGetGeoLocationSuccess(geoLocation: WeatherGeoLocation) {
-                    TODO("Not yet implemented")
+                    val fullLocation: String = geoLocation.run { "$cityName, $parentCity, $areaName, $country" }
+                    tvLocation?.text = fullLocation
                 }
 
                 override fun onGetGeoLocationError(message: String) {
-                    TODO("Not yet implemented")
+                    
                 }
 
                 override fun onGetCurrentConditionsSuccess(currentConditions: WeatherCurrentCondition) {
-                    TODO("Not yet implemented")
+                    currentConditions.apply {
+                        ivWeatherIcon?.setImageUrl(weatherIcon)
+                        tvCurrentTemperature?.text = currentTemperature
+                        tvRealFeelTemperature?.text = getString(R.string.real_feel, realFeelTemperature)
+                        tvDirectionWindValue?.text = directionWind
+                        tvSpeedWindValue?.text = speedWind
+                        tvRelativeHumidityValue?.text = relativeHumidity
+                        tvPressureValue?.text = pressure
+                        tvPrecipitationSummaryValue?.text = precipitationSummary
+                    }
                 }
 
                 override fun onGetCurrentConditionsError(message: String) {
-                    TODO("Not yet implemented")
+                    
                 }
 
                 override fun onGet1DayForecastSuccess(currentConditions: WeatherForecast) {
-                    TODO("Not yet implemented")
+                    
                 }
 
                 override fun onGet1DayForecastError(message: String) {
-                    TODO("Not yet implemented")
+                    
                 }
 
                 override fun onGet5DayForecastSuccess(currentConditions: WeatherForecast) {
-                    TODO("Not yet implemented")
+                    
                 }
 
                 override fun onGet5DayForecastError(message: String) {
-                    TODO("Not yet implemented")
+                    
                 }
             })
     }

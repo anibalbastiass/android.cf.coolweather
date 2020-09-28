@@ -14,7 +14,7 @@ class CurrentConditionsMapper {
             currentTemperature = temperature?.imperial?.getImperialFormat() ?: "",
             realFeelTemperature = realFeelTemperature?.imperial?.getImperialFormat() ?: "",
             relativeHumidity = "$relativeHumidity%",
-            directionWind = wind?.direction?.apply { "$degrees $english" }?.toString() ?: "",
+            directionWind = wind?.direction?.run { "$degrees $english" }?.toString() ?: "",
             speedWind = wind?.speed?.imperial?.getImperialFormat() ?: "",
             pressure = pressure?.imperial?.getImperialFormat() ?: "",
             precipitationSummary = precipitationSummary?.precipitation?.imperial?.getImperialFormat()

@@ -41,7 +41,7 @@ object DataExtension {
     }
 
     fun getUrlIcon(weatherIcon: Int): String =
-        BuildConfig.GRADLE_ICON_BASE_URL + weatherIcon.toString().padStart(2, '0')
+        BuildConfig.GRADLE_ICON_BASE_URL + weatherIcon.toString().padStart(2, '0') + "-s.png"
 
     fun RemoteUnit?.getImperialFormat(): String = "${this?.value} ${this?.unit}"
 }
