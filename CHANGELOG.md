@@ -19,3 +19,7 @@
 * Get Forecast day by 1 day and 5 days returning data
 * Implement Unit tests with a almost 80% of coverage
 * implementation('com.anibalbastias.weatherapi:library:0.1.0-20200928.131459-1@aar')
+
+## 1.0.0
+
+* implementation('com.anibalbastias.weatherapi:library:1.0.0@aar')
