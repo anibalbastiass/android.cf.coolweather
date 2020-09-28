@@ -161,5 +161,6 @@ The following image shows the almost 80% of coverage for Unit testing in library
 * Implement Detekt for vulnerability code
 * Increment coverage for Unit tests
 * Implement this library for iOS Apps.
+* Import 3rd parties libraries as aar files in libs folder for avoid import in the external projects
 * Complete Demo handling connection cases and integrate forecast data
 
