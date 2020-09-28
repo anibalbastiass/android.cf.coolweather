@@ -4,6 +4,7 @@ object GradlePluginVersion {
     const val KOTLIN = CoreVersion.KOTLIN
     const val SAFE_ARGS = CoreVersion.NAVIGATION
     const val JFROG_ARTIFACTORY = "4.17.1"
+    const val JACOCO = "0.8.5"
 }
 
 object GradlePluginId {
@@ -17,10 +18,12 @@ object GradlePluginId {
     const val JFROG_ARTIFACTORY = "com.jfrog.artifactory"
     const val MAVEN_PUBLISH = "maven-publish"
     const val KAPT = "kapt"
+    const val JACOCO = "org.jacoco:org.jacoco.core"
+    const val JACOCO_ID = "jacoco"
 }
 
 object GradleOldWayPlugins {
-    const val ANDROID_GRADLE = "com.android.tools.build:gradle:${GradlePluginVersion.ANDROID_GRADLE}"
     const val SAFE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${GradlePluginVersion.SAFE_ARGS}"
     const val JFROG_BUILD_INFO = "org.jfrog.buildinfo:build-info-extractor-gradle:${GradlePluginVersion.JFROG_ARTIFACTORY}"
+    const val JACOCO = "${GradlePluginId.JACOCO}:${GradlePluginVersion.JACOCO}"
 }

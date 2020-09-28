@@ -13,11 +13,11 @@ class MainApplication : Application(), KodeinAware {
 
     companion object {
         lateinit var appContext: Context
+        lateinit var application: Application
     }
 
     override val kodein = Kodein.lazy {
         import(androidXModule(this@MainApplication))
-//        import(wifiModule)
         import(navigationModule)
         externalSources.add(FragmentArgsExternalSource())
     }
@@ -29,6 +29,7 @@ class MainApplication : Application(), KodeinAware {
 
         context = this
         appContext = this
+        application = this
 
         initTimber()
     }

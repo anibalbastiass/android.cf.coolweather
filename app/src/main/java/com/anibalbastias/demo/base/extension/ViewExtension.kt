@@ -3,10 +3,14 @@ package com.anibalbastias.demo.base.extension
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.Toolbar
+import coil.api.load
+import com.anibalbastias.demo.R
 
 object ViewExtension {
 
@@ -38,5 +42,13 @@ object ViewExtension {
 
     fun Context.toast(text: String, length: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(this, text, length).show()
+    }
+
+    fun AppCompatImageView.setImageUrl(imageUrl: String?) {
+        imageUrl?.let { image ->
+            load(image) {
+                crossfade(true)
+            }
+        }
     }
 }

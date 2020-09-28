@@ -1,6 +1,6 @@
 def packageName = 'com.anibalbastias.weatherapi'
 //def libraryVersion = '1.0.0'
-def libraryVersion = '0.0.1-SNAPSHOT'
+def libraryVersion = '0.1.2-SNAPSHOT'
 
 publishing {
     publications {

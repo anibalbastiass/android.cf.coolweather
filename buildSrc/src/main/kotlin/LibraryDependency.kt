@@ -18,6 +18,7 @@ private object LibraryVersion {
     const val LIFECYCLE_VIEW_MODEL_KTX = "2.1.0"
     const val COIL = "0.9.1"
     const val REACTIVE_X = "2.1.0"
+    const val GMS_LOCATION = "11.0.0"
 }
 
 object LibraryDependency {
@@ -60,4 +61,8 @@ object LibraryDependency {
     const val RX_JAVA = "io.reactivex.rxjava2:rxjava:${LibraryVersion.REACTIVE_X}"
     const val RX_ANDROID = "io.reactivex.rxjava2:rxandroid:${LibraryVersion.REACTIVE_X}"
     const val RX_KOTLIN = "io.reactivex.rxjava2:rxkotlin:${LibraryVersion.REACTIVE_X}"
+
+    // GMS
+    const val GMS_LOCATION =
+        "com.google.android.gms:play-services-location:${LibraryVersion.GMS_LOCATION}"
 }

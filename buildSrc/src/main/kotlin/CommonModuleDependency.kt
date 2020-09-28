@@ -2,6 +2,21 @@ import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.ProjectDependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
+fun DependencyHandler.addTestDependencies() {
+    testImplementation(project(ModuleDependency.TEST_UTILS))
+
+    testImplementation(TestLibraryDependency.JUNIT)
+    androidTestImplementation(TestLibraryDependency.TEST_RUNNER)
+    androidTestImplementation(TestLibraryDependency.ESPRESSO_CORE)
+    testImplementation(TestLibraryDependency.KLUENT)
+    androidTestImplementation(TestLibraryDependency.KLUENT_ANDROID)
+    testImplementation(TestLibraryDependency.MOCKK)
+    testImplementation(TestLibraryDependency.COROUTINES_TEST)
+    testImplementation(TestLibraryDependency.ANDROID_X_CORE_TESTING)
+    testImplementation(TestLibraryDependency.ROOM_TESTING)
+    testImplementation(TestLibraryDependency.MOCKITO_KOTLIN)
+}
+
 @Suppress("detekt.UnusedPrivateMember")
 private fun DependencyHandler.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
