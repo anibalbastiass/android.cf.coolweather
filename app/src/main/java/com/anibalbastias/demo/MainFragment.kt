@@ -21,7 +21,7 @@ class MainFragment : BaseContainerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        manager.getGeoPosition(-33.5346427, -70.630751,
+        manager.getCurrentWeather(-33.5346427, -70.630751,
             object: WeatherListener {
                 override fun onGetGeoLocationSuccess(geoLocation: WeatherGeoLocation) {
                     TODO("Not yet implemented")
