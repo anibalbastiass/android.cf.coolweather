@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CoolWeather Demo</string>
+    <string name="real_feel">Real Feel: %s</string>
+    <string name="direction_wind">Direction Wind</string>
+    <string name="speed_wind">Speed Wind</string>
+    <string name="relative_humidity">Relative Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="precipitation_summary">Precipitation Summary</string>
+</resources>
