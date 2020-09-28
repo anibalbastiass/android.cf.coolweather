@@ -18,7 +18,7 @@ class CurrentConditionsMapper {
             speedWind = wind?.speed?.imperial?.getImperialFormat() ?: "",
             pressure = pressure?.imperial?.getImperialFormat() ?: "",
             precipitationSummary = precipitationSummary?.precipitation?.imperial?.getImperialFormat()
-                ?: ""
+                .toString()
         )
     }
 }

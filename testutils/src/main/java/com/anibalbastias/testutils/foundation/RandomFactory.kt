@@ -1,9 +1,11 @@
-package com.mobdev.porinterno.library.testutils.foundation
+package com.anibalbastias.testutils.foundation
 
+import android.os.Build
 import android.text.SpannableString
-import java.util.Random
-import java.util.UUID
+import java.time.LocalDate
+import java.util.*
 import java.util.concurrent.ThreadLocalRandom
+import kotlin.math.roundToInt
 
 object RandomFactory {
     fun generateString(): String = UUID.randomUUID().toString()
@@ -38,4 +40,19 @@ object RandomFactory {
     private fun generateStringWithoutDash() = generateString().replace("-", "")
     private fun generateStringWithoutDashAndSubSequence(start: Int, end: Int) =
         generateStringWithoutDash().subSequence(start, end)
+
+    private fun createRandomIntBetween(start: Int, end: Int): Int {
+        return start + (Math.random() * (end - start)).roundToInt()
+    }
+
+    fun generateRandomDate(startYear: Int, endYear: Int): LocalDate? {
+        val day = createRandomIntBetween(1, 28)
+        val month = createRandomIntBetween(1, 12)
+        val year = createRandomIntBetween(startYear, endYear)
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LocalDate.of(year, month, day)
+        } else {
+            null
+        }
+    }
 }
