@@ -20,7 +20,7 @@ import org.kodein.di.generic.instance
 
 class WeatherManager(application: Application) : KodeinAware {
 
-    private var weatherCallback: WeatherListener? = null
+    var weatherCallback: WeatherListener? = null
 
     private val getGeoPositionUseCase: GetGeoPositionUseCase by instance()
     private val getCurrentConditionsUseCase: GetCurrentConditionsUseCase by instance()
@@ -71,7 +71,7 @@ class WeatherManager(application: Application) : KodeinAware {
         }
     }
 
-    private fun getCurrentConditions(cityKey: String) {
+    fun getCurrentConditions(cityKey: String) {
         MainScope().launch {
             try {
                 getCurrentConditionsUseCase.execute(cityKey)?.also {
@@ -89,7 +89,7 @@ class WeatherManager(application: Application) : KodeinAware {
         }
     }
 
-    private fun get1DayForecast(cityKey: String) {
+    fun get1DayForecast(cityKey: String) {
         MainScope().launch {
             try {
                 get1DayDailyForecastsUseCase.execute(cityKey)?.also {
@@ -107,7 +107,7 @@ class WeatherManager(application: Application) : KodeinAware {
         }
     }
 
-    private fun get5DayForecast(cityKey: String) {
+    fun get5DayForecast(cityKey: String) {
         MainScope().launch {
             try {
                 get5DayDailyForecastsUseCase.execute(cityKey)?.also {
